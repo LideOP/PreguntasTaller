@@ -1,0 +1,20 @@
+<form (submit)="onSubmit()">
+  <input [(ngModel)]="userCode" name="userCode" type="text" placeholder="Ingrese su código de usuario">
+  <button type="submit">Iniciar sesión</button>
+ </form>
+ <div *ngIf="error">{{ error }}</div>
+  <table>
+    <thead>
+       <tr>
+         <th>UserCode</th>
+         <th>UserName</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let item of listarEstu">
+         <td>{{ item.UserCode }}</td>
+         <td>{{ item.UserName }}</td>
+       </tr>
+
+    </tbody>
+   </table>

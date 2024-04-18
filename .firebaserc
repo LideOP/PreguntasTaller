@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "preguntas-fd3b4": {
+      "hosting": {
+        "asignarpuntos": [
+          "preguntas-fd3b4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "preguntas-fd3b4"
+  }
+}
