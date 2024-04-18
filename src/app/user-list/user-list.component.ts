@@ -12,6 +12,8 @@ export class UserListComponent implements OnInit{
   userName: string = '';
   userCode: string = '';
   isAdmin: boolean = false;
+  solicitudes: any[] = [];
+
 
   // userData: any; 
  constructor(private authService:AutentificarService , private solicitudService: SolicitudService) {
@@ -31,24 +33,14 @@ export class UserListComponent implements OnInit{
   console.log('El código de usuario es: ', this.userCode);
   this.listarEstudiantes(); 
   this.mostrarUserName();
-  // this.isAdmin = this.authService.getUserCode() === '800000001';
-
-  
-
- }
- mostrarSolicitudes(){
-  console.log('Mostrar solicitudes');
- }
-  
-
- 
- listarEstudiantes(){
-
-  this.authService.mostrarDatos().subscribe(users => {
-    this.users = Object.values(users);
-  });
- }
- mostrarUserName(){
+}
+  listarEstudiantes(){
+    
+    this.authService.mostrarDatos().subscribe(users => {
+      this.users = Object.values(users);
+    });
+  }
+  mostrarUserName(){
     // const userCode = this.authService.getUserCode(); // Obtén el userCode del servicio
     this.authService.getUserByCode(this.userCode).subscribe(user => {
       console.log(user);
@@ -60,11 +52,17 @@ export class UserListComponent implements OnInit{
       }
     });
   }
-
-   preguntar() {
+  
+  mostrarSolicitudes(){
+    this.solicitudService.obtenerSolicitudes().subscribe(solicitudes => {
+      this.solicitudes = Object.values(solicitudes);
+    });
+   console.log('Mostrar solicitudes',this.solicitudes);
+  }
+  preguntar() {
     this.solicitudService.enviarSolicitud(this.userCode).then(() => {
-       console.log('Solicitud enviada al administrador');
-       // Aquí puedes mostrar un mensaje al usuario indicando que la solicitud ha sido enviada
+      console.log('Solicitud enviada al administrador');
+      // Aquí puedes mostrar un mensaje al usuario indicando que la solicitud ha sido enviada
     }).catch(error => {
        console.error('Error al enviar la solicitud:', error);
     });

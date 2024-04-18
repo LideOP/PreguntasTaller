@@ -1,7 +1,12 @@
 <p>user-list works!</p>
 <div>
   <div *ngIf="userName">Bienvenido, {{ userName }}!</div>
-  <button *ngIf="isAdmin" (click)="mostrarSolicitudes()">Solicitudes</button>
+  <div *ngIf="isAdmin">
+  <button type="button" (click)="mostrarSolicitudes()">Solicitudes</button>
+  <tr>Solicitudes</tr>
+  <td>{{ solicitudes }}</td>
+</div>
+
   <button *ngIf="!isAdmin" (click)="preguntar()">Preguntar</button>
 <table>
     <thead>
@@ -17,6 +22,8 @@
          <td>{{ item.UserName }}</td>
          <td>{{ item.point }}</td>
        </tr>
+
+      
 
     </tbody>
    </table>

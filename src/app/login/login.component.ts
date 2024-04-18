@@ -34,7 +34,6 @@ export class LoginComponent {
       this.authService.setUserCode(this.userCode);
 
       console.log('Inicio de sesión exitoso como administrador');
-      //  this.router.navigate(['/administrador']);
       this.router.navigate(['/user-list']);
 
        return;

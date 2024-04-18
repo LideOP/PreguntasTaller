@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AdministradorComponent } from './administrador/administrador.component';
 
 
 @NgModule({
@@ -18,7 +17,6 @@ import { AdministradorComponent } from './administrador/administrador.component'
     AppComponent,
     LoginComponent,
     UserListComponent,
-    AdministradorComponent
  ],
  imports: [
     FormsModule,
