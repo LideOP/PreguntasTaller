@@ -18,7 +18,6 @@ export class LoginComponent {
     
   ngOnInit(): void {
     this.mostrarEstudiantes();
-    this.isAdmin = this.userCode === '800000001';
      
 }
   mostrarEstudiantes(){
@@ -32,6 +31,8 @@ export class LoginComponent {
   }
   login() {
     if (this.userCode === '800000001') {
+      this.authService.setUserCode(this.userCode);
+
       console.log('Inicio de sesión exitoso como administrador');
       //  this.router.navigate(['/administrador']);
       this.router.navigate(['/user-list']);

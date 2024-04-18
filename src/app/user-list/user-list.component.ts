@@ -11,11 +11,21 @@ export class UserListComponent implements OnInit{
   users : any[]=[];
   userName: string = '';
   userCode: string = '';
-  isAdmin: boolean = true;
+  isAdmin: boolean = false;
 
   // userData: any; 
  constructor(private authService:AutentificarService , private solicitudService: SolicitudService) {
+
+    this.userCode = this.authService.getUserCode()
+    console.log(">>>>>",this.userCode);
+    
+    if (this.userCode === '800000001') {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
  }
+
  ngOnInit(): void {
   this.userCode = this.authService.getUserCode();
   console.log('El código de usuario es: ', this.userCode);
@@ -23,13 +33,7 @@ export class UserListComponent implements OnInit{
   this.mostrarUserName();
   // this.isAdmin = this.authService.getUserCode() === '800000001';
 
-  this.authService.userCode$.subscribe(userCode => {
-    if (userCode === '800000001') {
-      this.isAdmin = true;
-    } else {
-      this.isAdmin = false;
-    }
-  });
+  
 
  }
  mostrarSolicitudes(){
